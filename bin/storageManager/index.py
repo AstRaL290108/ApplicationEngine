@@ -1,4 +1,4 @@
-from .storage import *
+from .storage import LocalStorage, Cookie
 import eel
 
 localStorage = LocalStorage()

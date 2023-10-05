@@ -1,7 +1,6 @@
 import eel
 import os
 import settings as cfg
-
 import application
 
 

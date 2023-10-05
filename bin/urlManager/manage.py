@@ -3,12 +3,15 @@ from bs4 import BeautifulSoup
 from pathlib import Path
 
 import settings
+from bin.storageManager import Cookie
 
 
 class Request:
 	def __init__(self, params: dict):
 		self.params = params
 		self.code = 200
+		
+		self.cookie = Cookie()
 
 
 	# Поиск и захват html документа
@@ -43,7 +46,9 @@ class Request:
 		if not(data is None):
 			keys = data.keys()
 			for i in keys:
-				body = body.replace("{"+ f" {i} " + "}", str(data[f'{i}'])) 
+				body = body.replace("{"+ f" {i} " + "}", str(data[f'{i}']))
+
+		body = body.replace("{ static_dir }", "../../../static/") 
 
 		return {"head": head, 'body': body}
 

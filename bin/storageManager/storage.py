@@ -43,3 +43,19 @@ class LocalStorage:
 	def clear(self):
 		with open("bin/storageManager/storage.json", "w") as file:
 			json.dump({}, file)
+
+
+class Cookie:
+	def set(self, name, value, options = None):
+		if options is None:
+			eel.setCookie(name, value)
+		else:
+			eel.setCookie(name, value, options)
+
+
+	def delete(self, name):
+		eel.deleteCookie(name)
+
+
+	def get(self, name):
+		return eel.getCookie(name)()
